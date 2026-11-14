@@ -50,7 +50,6 @@ safe_mode:
 
 # Enable Home Assistant API
 api:
-  reboot_timeout: 3600s
   encryption:
     key: ${api_key}
 ota:
@@ -104,7 +103,6 @@ modbus:
     send_wait_time: 400ms
     turnaround_time: 40ms    
 
-
   #GPIO4 - Refresh the Watchdog (10ms)
   #GPIO12 - Power the Ethernet PHY (Always on if using the PHY)
   #GPIO13 - NET / Green LED
@@ -135,6 +133,7 @@ output:
     pin:
        number: GPIO4
     id: watchdog_feed
+
 switch:
   - platform: gpio
     pin: GPIO12
@@ -170,5 +169,4 @@ interval:
             - output.turn_on: watchdog_feed
             - delay: 10ms
             - output.turn_off: watchdog_feed
-
 ```
