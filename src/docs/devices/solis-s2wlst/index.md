@@ -9,18 +9,20 @@ difficulty: 4
 
 <img width="381" height="492" alt="image" src="https://github.com/user-attachments/assets/36166359-11be-48ff-8203-170543ab5816" />
 
-Solis provides an ESP32 dongle to connect their inverters (equiped with MODBUS RTU connectivity) to their cloud. 
+Solis provides an ESP32 WROVER-E based dongle to connect their inverters (equiped with MODBUS RTU connectivity) to their cloud. 
 
 In order to flash it, pins must be soldered on the board. Then, the current firmware can be dumped using any USB-to-Serial adapter or 3.3V UART. It is always interesting to keep the existing firmware in order to revert the mod. 
 
 The device has:
 - Modbus to UART
-- Ethernet (with GPIO12 to enable it electrically)
+- Ethernet LAN8720 (with GPIO12 to enable it electrically)
 - 1 button (GPIO34)
 - 2 LEDs (GPIO13 and GPIO15)
 - 1 embedded watchdog (on GPIO4)
 
 I configured it as a MODBUS RTU/TCP Bridge using modbus_bridge component from https://github.com/rosenrot00/esphome_modbus_bridge . It can also be configured to directly poll the MODBUS values and expose them.
+
+It appears that different revisions of the board are available, my board is `Ginlong Technology DAWCE6330-V1.3`. 
 
 ## Basic Configuration
 
